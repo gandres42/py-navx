@@ -11,7 +11,7 @@ PYBIND11_MODULE(py_navx, m) {
     py::enum_<AHRS::SerialDataType>(m, "SerialDataType")
         // Define your enum values here
         .value("kProcessedData", AHRS::SerialDataType::kProcessedData)
-        .value("kRaw", AHRS::SerialDataType::kRawData);
+        .value("kRawData", AHRS::SerialDataType::kRawData);
 
     py::class_<AHRS>(m, "AHRS")
         .def(py::init<std::string, AHRS::SerialDataType, int>())

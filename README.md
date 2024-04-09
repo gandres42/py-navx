@@ -1,29 +1,18 @@
 # py-navx
+Fork of https://github.com/strykeforce/py-navx with added functions to allow raw sensor access
 
-Adaptation of [kauailabs/navxmxp](https://github.com/kauailabs/navxmxp) by way of [FRC900/navXTimeSync](https://github.com/FRC900/navXTimeSync) for
-use with Python 3 on Raspberry Pi vision co-processor.
-
-## Preparing the FRCVision Raspberry Pi
-
+## Preparing the Environment
 Install prerequisite software:
-
 ```
 sudo apt install git cmake python3-dev
 ```
 
-Give user `pi` access to the serial port:
-
-```
-sudo usermod -a -G dialout pi
-```
-
 ## Installation
-
 Download and install the latest version of `py-navx`:
-
 ```
-git clone --recursive https://github.com/strykeforce/py-navx.git
-sudo pip3 install ./py-navx
+git clone --recurse-submodules https://github.com/gandres42/py-navx
+cd py-navx
+pip install .
 ```
 
 ## Example
@@ -31,9 +20,9 @@ sudo pip3 install ./py-navx
 On Linux, the serial port to the navX should be `/dev/ttyACM0`.
 
 ```python
-from py_navx import AHRS
+from py_navx import AHRS, SerialDataType
 
-ahrs = AHRS("/dev/ttyACM0")
+ahrs = AHRS("/dev/ttyACM0", SerialDataType.kProcessedData)
 timestamp = ahrs.get_last_sensor_timestamp()
 
 print("timestamp = {}".format(timestamp))
