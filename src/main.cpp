@@ -39,7 +39,11 @@ PYBIND11_MODULE(py_navx, m) {
         .def("get_raw_accel_z", &AHRS::GetRawAccelZ)
         .def("get_raw_gyro_x", &AHRS::GetRawGyroX)
         .def("get_raw_gyro_y", &AHRS::GetRawGyroY)
-        .def("get_raw_gyro_z", &AHRS::GetRawGyroZ);
+        .def("get_raw_gyro_z", &AHRS::GetRawGyroZ)
+        .def("get_raw_mag_x", &AHRS::GetRawMagX)
+        .def("get_raw_mag_y", &AHRS::GetRawMagY)
+        .def("get_raw_mag_z", &AHRS::GetRawMagZ)
+        .def("close", &AHRS::Close);
 
 
 #ifdef VERSION_INFO
